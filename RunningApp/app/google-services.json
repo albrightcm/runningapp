@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "465706476034",
+    "project_id": "runningapp-d16a0",
+    "storage_bucket": "runningapp-d16a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465706476034:android:3d6a254d0626336c0e7d1b",
+        "android_client_info": {
+          "package_name": "ude.esom.runningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465706476034-u88rj3vnss6cf157dvmhmvp97qp5nmor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKEDbO4wlih7d46aJitnKqh0mopGtck1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465706476034-u88rj3vnss6cf157dvmhmvp97qp5nmor.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
