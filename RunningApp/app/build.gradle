@@ -3,6 +3,7 @@ plugins {
 		id 'com.google.gms.google-services'
 		id 'com.google.firebase.crashlytics'
 }
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 30
