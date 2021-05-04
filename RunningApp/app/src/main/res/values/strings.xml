@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">RunningApp</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Map View</string>
+    <string name="tab_text_2">Past Runs</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
+    <string name="mapbox_access_token">pk.eyJ1Ijoic21pdGRhbHQiLCJhIjoiY2tvOTg1MjZmMjJyeDJ4b2k4a3hmNTdvNiJ9.Et_V8IUrGH2ONAq9EeRetQ</string>
 </resources>
