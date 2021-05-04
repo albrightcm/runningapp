@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\smithdalt\\Documents\\Projects\\mobile\\runningapp\\RunningApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
+            "outputFile": "C:\\Users\\albrightcm\\Documents\\Mobile\\Final Lab\\RunningApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\smithdalt\\.gradle\\caches\\transforms-2\\files-2.1\\fc816bc91f98c774dd50ed125fd7f9de\\appcompat-1.2.0\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\albrightcm\\.gradle\\caches\\transforms-2\\files-2.1\\fc816bc91f98c774dd50ed125fd7f9de\\appcompat-1.2.0\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

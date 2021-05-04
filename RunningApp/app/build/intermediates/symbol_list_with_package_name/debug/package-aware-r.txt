@@ -1919,6 +1919,7 @@ id blocking
 id bottom
 id bounce
 id buttonPanel
+id button_run
 id cache_measures
 id cancel_button
 id center
@@ -1989,7 +1990,6 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab
 id fade
 id fill
 id fill_horizontal
@@ -2039,6 +2039,7 @@ id leftToRight
 id line1
 id line3
 id linear
+id linearLayout
 id listMode
 id list_item
 id mapView
@@ -2211,9 +2212,17 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView11
+id textView12
+id textView5
+id textView8
+id textView9
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
+id text_miles
+id text_pace
+id text_time
 id textinput_counter
 id textinput_error
 id textinput_helper_text
