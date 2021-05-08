@@ -18,20 +18,18 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final Fragment[] FRAGMENTS = new Fragment[]{MapFragment.newInstance(1), HistoryFragment.newInstance(2)};
+
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mContext = context;
     }
 
     @Override
     public Fragment getItem(int position) {
-        if(position == 0) {
-            return MapFragment.newInstance(1);
-        } else {
-            return HistoryFragment.newInstance(2);
-        }
+        return FRAGMENTS[position];
     }
 
     @Nullable

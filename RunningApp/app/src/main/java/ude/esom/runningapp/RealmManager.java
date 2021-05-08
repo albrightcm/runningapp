@@ -10,26 +10,17 @@ import io.realm.RealmModel;
 import io.realm.RealmObject;
 
 public class RealmManager<T extends RealmModel>  {
-    private static RealmManager instance;
     private Realm realm;
+    private static final String REALM_NAME = "Running App";
 
-    private RealmManager() {}
-
-    public static RealmManager getInstance()
-    {
-        if(instance == null) {
-            instance = new RealmManager();
-        }
-        return instance;
-    }
+    public RealmManager() {}
 
     public void initialize(Context context)
     {
         Realm.init(context);
 
-        String realmName = "GPA Calculator";
         RealmConfiguration config = new RealmConfiguration.Builder()
-                .name(realmName)
+                .name(REALM_NAME)
                 .allowWritesOnUiThread(true)
                 .allowQueriesOnUiThread(true)
                 .build();

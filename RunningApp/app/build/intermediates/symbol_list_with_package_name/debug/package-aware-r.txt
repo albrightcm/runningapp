@@ -1410,6 +1410,8 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen lat_long_text_size
+dimen list_item_height
 dimen mapbox_angular_velocity_multiplier
 dimen mapbox_defaultMultiTapMovementThreshold
 dimen mapbox_defaultScaleSpanSinceStartThreshold
@@ -1430,6 +1432,7 @@ dimen mapbox_minimum_scale_speed
 dimen mapbox_minimum_scale_velocity
 dimen mapbox_my_locationview_outer_circle
 dimen mapbox_ninety_two_dp
+dimen margin_medium
 dimen material_clock_display_padding
 dimen material_clock_face_margin_top
 dimen material_clock_hand_center_dot_radius
@@ -1657,7 +1660,9 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen past_locations_text_size
 dimen test_mtrl_calendar_day_cornerSize
+dimen text_margin
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -2117,6 +2122,8 @@ id parentPanel
 id parentRelative
 id parent_matrix
 id password_toggle
+id past_locations_label
+id past_runs
 id path
 id pathRelative
 id peekHeight
@@ -2212,6 +2219,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id textView11
 id textView12
 id textView5
@@ -2403,6 +2411,7 @@ layout test_toolbar
 layout test_toolbar_custom_background
 layout test_toolbar_elevation
 layout test_toolbar_surface
+layout text_row_item
 layout text_view_with_line_height_from_appearance
 layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
@@ -2537,6 +2546,7 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string password_toggle_content_description
+string past_runs
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible

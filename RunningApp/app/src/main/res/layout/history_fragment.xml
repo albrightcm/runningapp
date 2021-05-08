@@ -3,4 +3,20 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/past_locations_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/text_margin"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/past_locations_text_size"
+        android:text="@string/past_runs" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/past_runs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

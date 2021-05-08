@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import ude.esom.runningapp.ui.main.HistoryFragment;
 import ude.esom.runningapp.ui.main.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 1)
+                {
+                    ((HistoryFragment)sectionsPagerAdapter.getItem(position)).updateRuns();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) { }
+        });
+
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);

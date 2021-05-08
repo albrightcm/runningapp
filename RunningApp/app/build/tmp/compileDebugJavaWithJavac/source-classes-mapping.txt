@@ -1,21 +1,25 @@
 ude/esom/runningapp/ui/main/PageViewModel.java
  ude.esom.runningapp.ui.main.PageViewModel
-ude/esom/runningapp/MainActivity.java
- ude.esom.runningapp.MainActivity
- ude.esom.runningapp.MainActivity$1
+ude/esom/runningapp/ui/main/PastRunAdapter.java
+ ude.esom.runningapp.ui.main.PastRunAdapter
+ ude.esom.runningapp.ui.main.PastRunAdapter$ViewHolder
 ude/esom/runningapp/RealmManager.java
  ude.esom.runningapp.RealmManager
 ude/esom/runningapp/BuildConfig.java
  ude.esom.runningapp.BuildConfig
 ude/esom/runningapp/PastRun.java
  ude.esom.runningapp.PastRun
-ude/esom/runningapp/ui/main/HistoryFragment.java
- ude.esom.runningapp.ui.main.HistoryFragment
 ude/esom/runningapp/ui/main/MapFragment.java
  ude.esom.runningapp.ui.main.MapFragment
  ude.esom.runningapp.ui.main.MapFragment$1
  ude.esom.runningapp.ui.main.MapFragment$2
  ude.esom.runningapp.ui.main.MapFragment$3
  ude.esom.runningapp.ui.main.MapFragment$MainActivityLocationCallback
+ude/esom/runningapp/ui/main/HistoryFragment.java
+ ude.esom.runningapp.ui.main.HistoryFragment
+ude/esom/runningapp/MainActivity.java
+ ude.esom.runningapp.MainActivity
+ ude.esom.runningapp.MainActivity$1
+ ude.esom.runningapp.MainActivity$2
 ude/esom/runningapp/ui/main/SectionsPagerAdapter.java
  ude.esom.runningapp.ui.main.SectionsPagerAdapter

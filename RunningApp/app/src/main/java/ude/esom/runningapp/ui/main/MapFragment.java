@@ -33,7 +33,9 @@ import com.mapbox.mapboxsdk.maps.Style;
 import java.lang.ref.WeakReference;
 import java.text.DecimalFormat;
 
+import ude.esom.runningapp.PastRun;
 import ude.esom.runningapp.R;
+import ude.esom.runningapp.RealmManager;
 
 import static android.graphics.Color.rgb;
 import static android.os.Looper.getMainLooper;
@@ -44,19 +46,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
     private PageViewModel pageViewModel;
 
+    private RealmManager<PastRun> realmManager;
+
     private MapView mapView;
     private MapboxMap mapboxMap;
     private LocationEngine locationEngine;
-    private long DEFAULT_INTERVAL_IN_MILLISECONDS = 2000L;
-    private long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
+    private final long DEFAULT_INTERVAL_IN_MILLISECONDS = 2000L;
+    private final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
     private MainActivityLocationCallback callback = new MainActivityLocationCallback(this);
-    private static DecimalFormat df = new DecimalFormat("##.##");
+    private static final DecimalFormat df = new DecimalFormat("##.##");
     private TextView paceText;
     private TextView distanceText;
     private TextView timeText;
     private long startTime = 0;
     private double distance = 0;
     private boolean isRunning = false;
+    private double minSpeed = Double.MAX_VALUE;
+    private double maxSpeed = 0.0;
     Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
         @Override
@@ -70,7 +76,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
             seconds = seconds % 60;
             timeText.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
             distanceText.setText(df.format(distance));
-            paceText.setText(String.format("%02d:%02d", paceMinutes, paceSeconds));
+            if(paceMinutes < 100) {
+                paceText.setText(String.format("%02d:%02d", paceMinutes, paceSeconds));
+            }
+
+            double speedMph = (distance/seconds)/3600;
+
+            if (speedMph > maxSpeed) maxSpeed = speedMph;
+            if (speedMph < minSpeed) minSpeed = speedMph;
+
             timerHandler.postDelayed(this, 1000);
         }
     };
@@ -103,6 +117,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         pageViewModel.setIndex(index);
+
+        realmManager = new RealmManager<>();
+        realmManager.initialize(getContext());
     }
 
     @Override
@@ -128,6 +145,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                 if (isRunning){
                     startTime = System.currentTimeMillis();
                     distance = 0;
+                    minSpeed = Double.MAX_VALUE;
+                    maxSpeed = 0;
                     run.setBackgroundColor(rgb(200, 0, 0));
                     run.setText("Stop Run");
                     timerHandler.postDelayed(timerRunnable, 0);
@@ -135,9 +154,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                     locationComponent.setCameraMode(CameraMode.TRACKING);
                 } else{
                     timerHandler.removeCallbacks(timerRunnable);
+
+                    long millis = System.currentTimeMillis() - startTime;
+                    int seconds = (int) (millis / 1000);
+                    double averageSpeed = (distance/seconds)/3600;
+
+                    PastRun pastRun = new PastRun(distance, averageSpeed, minSpeed, maxSpeed, 0);
+
+                    realmManager.create(pastRun);
+
                     run.setBackgroundColor(rgb(0, 255, 0));
                     run.setText("Start Run");
-
                 }
             }
         });
@@ -265,6 +292,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         if (locationEngine != null) {
             locationEngine.removeLocationUpdates(callback);
         }
-        mapView.onDestroy();
     }
 }
