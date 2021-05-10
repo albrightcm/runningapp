@@ -44,10 +44,11 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         long averageSpeedColKey;
         long minSpeedColKey;
         long maxSpeedColKey;
+        long secondsColKey;
         long caloriesBurnedColKey;
 
         PastRunColumnInfo(OsSchemaInfo schemaInfo) {
-            super(7);
+            super(8);
             OsObjectSchemaInfo objectSchemaInfo = schemaInfo.getObjectSchemaInfo("PastRun");
             this.idColKey = addColumnDetails("id", "id", objectSchemaInfo);
             this.datePerformedColKey = addColumnDetails("datePerformed", "datePerformed", objectSchemaInfo);
@@ -55,6 +56,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
             this.averageSpeedColKey = addColumnDetails("averageSpeed", "averageSpeed", objectSchemaInfo);
             this.minSpeedColKey = addColumnDetails("minSpeed", "minSpeed", objectSchemaInfo);
             this.maxSpeedColKey = addColumnDetails("maxSpeed", "maxSpeed", objectSchemaInfo);
+            this.secondsColKey = addColumnDetails("seconds", "seconds", objectSchemaInfo);
             this.caloriesBurnedColKey = addColumnDetails("caloriesBurned", "caloriesBurned", objectSchemaInfo);
         }
 
@@ -78,6 +80,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
             dst.averageSpeedColKey = src.averageSpeedColKey;
             dst.minSpeedColKey = src.minSpeedColKey;
             dst.maxSpeedColKey = src.maxSpeedColKey;
+            dst.secondsColKey = src.secondsColKey;
             dst.caloriesBurnedColKey = src.caloriesBurnedColKey;
         }
     }
@@ -242,6 +245,28 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
 
     @Override
     @SuppressWarnings("cast")
+    public int realmGet$seconds() {
+        proxyState.getRealm$realm().checkIfValid();
+        return (int) proxyState.getRow$realm().getLong(columnInfo.secondsColKey);
+    }
+
+    @Override
+    public void realmSet$seconds(int value) {
+        if (proxyState.isUnderConstruction()) {
+            if (!proxyState.getAcceptDefaultValue$realm()) {
+                return;
+            }
+            final Row row = proxyState.getRow$realm();
+            row.getTable().setLong(columnInfo.secondsColKey, row.getObjectKey(), value, true);
+            return;
+        }
+
+        proxyState.getRealm$realm().checkIfValid();
+        proxyState.getRow$realm().setLong(columnInfo.secondsColKey, value);
+    }
+
+    @Override
+    @SuppressWarnings("cast")
     public int realmGet$caloriesBurned() {
         proxyState.getRealm$realm().checkIfValid();
         return (int) proxyState.getRow$realm().getLong(columnInfo.caloriesBurnedColKey);
@@ -263,13 +288,14 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
     }
 
     private static OsObjectSchemaInfo createExpectedObjectSchemaInfo() {
-        OsObjectSchemaInfo.Builder builder = new OsObjectSchemaInfo.Builder(NO_ALIAS, "PastRun", false, 7, 0);
+        OsObjectSchemaInfo.Builder builder = new OsObjectSchemaInfo.Builder(NO_ALIAS, "PastRun", false, 8, 0);
         builder.addPersistedProperty(NO_ALIAS, "id", RealmFieldType.STRING, Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "datePerformed", RealmFieldType.DATE, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "distanceTraveled", RealmFieldType.DOUBLE, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "averageSpeed", RealmFieldType.DOUBLE, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "minSpeed", RealmFieldType.DOUBLE, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "maxSpeed", RealmFieldType.DOUBLE, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
+        builder.addPersistedProperty(NO_ALIAS, "seconds", RealmFieldType.INTEGER, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "caloriesBurned", RealmFieldType.INTEGER, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         return builder.build();
     }
@@ -368,6 +394,13 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
                 objProxy.realmSet$maxSpeed((double) json.getDouble("maxSpeed"));
             }
         }
+        if (json.has("seconds")) {
+            if (json.isNull("seconds")) {
+                throw new IllegalArgumentException("Trying to set non-nullable field 'seconds' to null.");
+            } else {
+                objProxy.realmSet$seconds((int) json.getInt("seconds"));
+            }
+        }
         if (json.has("caloriesBurned")) {
             if (json.isNull("caloriesBurned")) {
                 throw new IllegalArgumentException("Trying to set non-nullable field 'caloriesBurned' to null.");
@@ -436,6 +469,13 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
                 } else {
                     reader.skipValue();
                     throw new IllegalArgumentException("Trying to set non-nullable field 'maxSpeed' to null.");
+                }
+            } else if (name.equals("seconds")) {
+                if (reader.peek() != JsonToken.NULL) {
+                    objProxy.realmSet$seconds((int) reader.nextInt());
+                } else {
+                    reader.skipValue();
+                    throw new IllegalArgumentException("Trying to set non-nullable field 'seconds' to null.");
                 }
             } else if (name.equals("caloriesBurned")) {
                 if (reader.peek() != JsonToken.NULL) {
@@ -526,6 +566,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         builder.addDouble(columnInfo.averageSpeedColKey, unmanagedSource.realmGet$averageSpeed());
         builder.addDouble(columnInfo.minSpeedColKey, unmanagedSource.realmGet$minSpeed());
         builder.addDouble(columnInfo.maxSpeedColKey, unmanagedSource.realmGet$maxSpeed());
+        builder.addInteger(columnInfo.secondsColKey, unmanagedSource.realmGet$seconds());
         builder.addInteger(columnInfo.caloriesBurnedColKey, unmanagedSource.realmGet$caloriesBurned());
 
         // Create the underlying object and cache it before setting any object/objectlist references
@@ -566,6 +607,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         Table.nativeSetDouble(tableNativePtr, columnInfo.averageSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$averageSpeed(), false);
         Table.nativeSetDouble(tableNativePtr, columnInfo.minSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$minSpeed(), false);
         Table.nativeSetDouble(tableNativePtr, columnInfo.maxSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$maxSpeed(), false);
+        Table.nativeSetLong(tableNativePtr, columnInfo.secondsColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$seconds(), false);
         Table.nativeSetLong(tableNativePtr, columnInfo.caloriesBurnedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$caloriesBurned(), false);
         return objKey;
     }
@@ -606,6 +648,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
             Table.nativeSetDouble(tableNativePtr, columnInfo.averageSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$averageSpeed(), false);
             Table.nativeSetDouble(tableNativePtr, columnInfo.minSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$minSpeed(), false);
             Table.nativeSetDouble(tableNativePtr, columnInfo.maxSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$maxSpeed(), false);
+            Table.nativeSetLong(tableNativePtr, columnInfo.secondsColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$seconds(), false);
             Table.nativeSetLong(tableNativePtr, columnInfo.caloriesBurnedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$caloriesBurned(), false);
         }
     }
@@ -639,6 +682,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         Table.nativeSetDouble(tableNativePtr, columnInfo.averageSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$averageSpeed(), false);
         Table.nativeSetDouble(tableNativePtr, columnInfo.minSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$minSpeed(), false);
         Table.nativeSetDouble(tableNativePtr, columnInfo.maxSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$maxSpeed(), false);
+        Table.nativeSetLong(tableNativePtr, columnInfo.secondsColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$seconds(), false);
         Table.nativeSetLong(tableNativePtr, columnInfo.caloriesBurnedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$caloriesBurned(), false);
         return objKey;
     }
@@ -679,6 +723,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
             Table.nativeSetDouble(tableNativePtr, columnInfo.averageSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$averageSpeed(), false);
             Table.nativeSetDouble(tableNativePtr, columnInfo.minSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$minSpeed(), false);
             Table.nativeSetDouble(tableNativePtr, columnInfo.maxSpeedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$maxSpeed(), false);
+            Table.nativeSetLong(tableNativePtr, columnInfo.secondsColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$seconds(), false);
             Table.nativeSetLong(tableNativePtr, columnInfo.caloriesBurnedColKey, objKey, ((ude_esom_runningapp_PastRunRealmProxyInterface) object).realmGet$caloriesBurned(), false);
         }
     }
@@ -708,6 +753,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         unmanagedCopy.realmSet$averageSpeed(realmSource.realmGet$averageSpeed());
         unmanagedCopy.realmSet$minSpeed(realmSource.realmGet$minSpeed());
         unmanagedCopy.realmSet$maxSpeed(realmSource.realmGet$maxSpeed());
+        unmanagedCopy.realmSet$seconds(realmSource.realmGet$seconds());
         unmanagedCopy.realmSet$caloriesBurned(realmSource.realmGet$caloriesBurned());
 
         return unmanagedObject;
@@ -724,6 +770,7 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         builder.addDouble(columnInfo.averageSpeedColKey, realmObjectSource.realmGet$averageSpeed());
         builder.addDouble(columnInfo.minSpeedColKey, realmObjectSource.realmGet$minSpeed());
         builder.addDouble(columnInfo.maxSpeedColKey, realmObjectSource.realmGet$maxSpeed());
+        builder.addInteger(columnInfo.secondsColKey, realmObjectSource.realmGet$seconds());
         builder.addInteger(columnInfo.caloriesBurnedColKey, realmObjectSource.realmGet$caloriesBurned());
 
         builder.updateExistingTopLevelObject();
@@ -759,6 +806,10 @@ public class ude_esom_runningapp_PastRunRealmProxy extends ude.esom.runningapp.P
         stringBuilder.append(",");
         stringBuilder.append("{maxSpeed:");
         stringBuilder.append(realmGet$maxSpeed());
+        stringBuilder.append("}");
+        stringBuilder.append(",");
+        stringBuilder.append("{seconds:");
+        stringBuilder.append(realmGet$seconds());
         stringBuilder.append("}");
         stringBuilder.append(",");
         stringBuilder.append("{caloriesBurned:");

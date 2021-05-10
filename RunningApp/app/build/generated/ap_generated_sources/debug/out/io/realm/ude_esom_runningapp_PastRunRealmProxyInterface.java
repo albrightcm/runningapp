@@ -14,6 +14,8 @@ public interface ude_esom_runningapp_PastRunRealmProxyInterface {
     public void realmSet$minSpeed(double value);
     public double realmGet$maxSpeed();
     public void realmSet$maxSpeed(double value);
+    public int realmGet$seconds();
+    public void realmSet$seconds(int value);
     public int realmGet$caloriesBurned();
     public void realmSet$caloriesBurned(int value);
 }

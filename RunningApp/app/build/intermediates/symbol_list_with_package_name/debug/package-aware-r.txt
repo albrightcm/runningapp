@@ -1916,6 +1916,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id avg_history
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1926,6 +1927,7 @@ id bounce
 id buttonPanel
 id button_run
 id cache_measures
+id calories_history
 id cancel_button
 id center
 id center_horizontal
@@ -1976,6 +1978,7 @@ id disableHome
 id disablePostScroll
 id disableScroll
 id disjoint
+id distance_history
 id dragDown
 id dragEnd
 id dragLeft
@@ -2068,8 +2071,10 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
+id max_history
 id message
 id middle
+id min_history
 id mini
 id month_grid
 id month_navigation_bar
@@ -2115,6 +2120,7 @@ id off
 id on
 id outline
 id outward
+id pace_history
 id packed
 id parallax
 id parent
@@ -2220,11 +2226,18 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView1
 id textView11
 id textView12
+id textView2
+id textView3
+id textView4
 id textView5
+id textView6
+id textView7
 id textView8
 id textView9
+id text_calories
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2238,6 +2251,7 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id time
+id time_history
 id title
 id titleDividerNoCustom
 id title_template

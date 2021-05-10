@@ -55,11 +55,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     private final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
     private MainActivityLocationCallback callback = new MainActivityLocationCallback(this);
     private static final DecimalFormat df = new DecimalFormat("##.##");
-    private TextView paceText;
-    private TextView distanceText;
-    private TextView timeText;
+    private TextView paceText, distanceText, timeText, calorieText;
     private long startTime = 0;
     private double distance = 0;
+    private int calories = 0;
     private boolean isRunning = false;
     private double minSpeed = Double.MAX_VALUE;
     private double maxSpeed = 0.0;
@@ -73,17 +72,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
             int paceSeconds = (int) ((seconds/distance) % 60);
             int hours = seconds / 3600;
             int minutes = seconds % 3600 / 60;
-            seconds = seconds % 60;
-            timeText.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+            int acseconds = seconds % 60;
+            timeText.setText(String.format("%02d:%02d:%02d", hours, minutes, acseconds));
             distanceText.setText(df.format(distance));
             if(paceMinutes < 100) {
                 paceText.setText(String.format("%02d:%02d", paceMinutes, paceSeconds));
             }
-
-            double speedMph = (distance/seconds)/3600;
+            double speedMph = (distance/(seconds/3600.0));
 
             if (speedMph > maxSpeed) maxSpeed = speedMph;
             if (speedMph < minSpeed) minSpeed = speedMph;
+
+            calories = (int) (80.7809 * (seconds/60.0) / 4.184);
+            calorieText.setText(String.valueOf(calories));
 
             timerHandler.postDelayed(this, 1000);
         }
@@ -132,7 +133,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-
+        calorieText = root.findViewById(R.id.text_calories);
         paceText = root.findViewById(R.id.text_pace);
         distanceText = root.findViewById(R.id.text_miles);
         timeText = root.findViewById(R.id.text_time);
@@ -147,6 +148,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                     distance = 0;
                     minSpeed = Double.MAX_VALUE;
                     maxSpeed = 0;
+                    calories = 0;
                     run.setBackgroundColor(rgb(200, 0, 0));
                     run.setText("Stop Run");
                     timerHandler.postDelayed(timerRunnable, 0);
@@ -157,9 +159,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
                     long millis = System.currentTimeMillis() - startTime;
                     int seconds = (int) (millis / 1000);
-                    double averageSpeed = (distance/seconds)/3600;
+                    double averageSpeed = (distance/(seconds/3600.0));
 
-                    PastRun pastRun = new PastRun(distance, averageSpeed, minSpeed, maxSpeed, 0);
+                    PastRun pastRun = new PastRun(distance, averageSpeed, minSpeed, maxSpeed, calories, seconds);
 
                     realmManager.create(pastRun);
 

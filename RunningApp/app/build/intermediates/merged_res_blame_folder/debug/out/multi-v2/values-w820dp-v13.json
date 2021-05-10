@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\smithdalt\\Documents\\Projects\\mobile\\runningapp\\RunningApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "outputFile": "C:\\Users\\albrightcm\\Documents\\Mobile\\Final Lab\\RunningApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\smithdalt\\Documents\\Projects\\mobile\\runningapp\\RunningApp\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "C:\\Users\\albrightcm\\Documents\\Mobile\\Final Lab\\RunningApp\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",
