@@ -1,3 +1,9 @@
+//Authors: Cole Albright and Dalton Smith
+//Calorie Calculation: http://www.shapesense.com/fitness-exercise/calculators/running-calorie-burn-calculator.shtml
+//Mapbox Tutorials(tracking location): https://docs.mapbox.com/help/tutorials/android-location-listening/
+//Firebase and Realm: Used tutorials provided on canvas
+//Timer: https://stackoverflow.com/questions/4597690/how-to-set-timer-in-android
+
 package ude.esom.runningapp.ui.main;
 
 import android.annotation.SuppressLint;
@@ -83,7 +89,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
             if (speedMph > maxSpeed) maxSpeed = speedMph;
             if (speedMph < minSpeed) minSpeed = speedMph;
 
-            calories = (int) (80.7809 * (seconds/60.0) / 4.184);
+            calories = (int) (68.5776 * (distance*1.60934));
             calorieText.setText(String.valueOf(calories));
 
             timerHandler.postDelayed(this, 1000);
@@ -162,7 +168,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                     double averageSpeed = (distance/(seconds/3600.0));
 
                     PastRun pastRun = new PastRun(distance, averageSpeed, minSpeed, maxSpeed, calories, seconds);
-
+                    //Storing new run object
                     realmManager.create(pastRun);
 
                     run.setBackgroundColor(rgb(0, 255, 0));

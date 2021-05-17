@@ -1,3 +1,5 @@
+//Authors: Cole Albright and Dalton Smith
+
 package ude.esom.runningapp.ui.main;
 
 import android.os.Bundle;
