@@ -8,6 +8,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmModel;
 import io.realm.RealmObject;
+import io.realm.Sort;
 
 public class RealmManager<T extends RealmModel>  {
     private Realm realm;
@@ -36,7 +37,7 @@ public class RealmManager<T extends RealmModel>  {
 
     public List<T> getEntries(Class<T> clazz)
     {
-        return realm.where(clazz).findAll();
+        return realm.where(clazz).findAll().sort("datePerformed", Sort.DESCENDING);
     }
 
     public T getEntry(String id, Class<T> clazz)

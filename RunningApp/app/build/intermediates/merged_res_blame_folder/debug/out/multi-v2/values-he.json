@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\albrightcm\\Documents\\Mobile\\Final Lab\\RunningApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
+            "outputFile": "C:\\Users\\smithdalt\\Documents\\Projects\\mobile\\runningapp\\RunningApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\albrightcm\\.gradle\\caches\\transforms-2\\files-2.1\\680ce69c9f04ae925f85d601f378793f\\jetified-mapbox-android-sdk-9.6.1\\res\\values-he\\values-he.xml",
+                    "source": "C:\\Users\\smithdalt\\.gradle\\caches\\transforms-2\\files-2.1\\680ce69c9f04ae925f85d601f378793f\\jetified-mapbox-android-sdk-9.6.1\\res\\values-he\\values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
